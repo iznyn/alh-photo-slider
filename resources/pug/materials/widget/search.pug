@@ -1,0 +1,19 @@
+//-
+//- Widget Search
+//-
+.widget__search.ui__popover._popinfo
+    a._trigger(href="#")
+        i.icon-magnifier
+    ._submenu Search
+
+    ._search--form
+        form(action="", method="get")
+            ._search--form--fields
+                ._search--form--input
+                    input(type="text", name="s", placeholder="Enter your search term")
+                ._search--form--submit
+                    button(type="submit")
+                        i.icon-magnifier
+
+        a._search--close(href="#")
+            i.icon--close

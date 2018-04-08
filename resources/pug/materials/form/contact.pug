@@ -1,0 +1,59 @@
+//-
+//- Contact form
+//-
+block form__contact_vars
+  - var contactFormTitle               = 'Contact Us';
+  - var contactFormNameLabel           = 'Name';
+  - var contactFormNamePlaceholder     = 'Name';
+  - var contactFormEmailLabel          = 'Email';
+  - var contactFormEmailPlaceholder    = 'Email';
+  - var contactFormPhone               = true;
+  - var contactFormPhoneLabel          = 'Phone';
+  - var contactFormPhonePlaceholder    = 'Phone';
+  - var contactFormMessageLabel        = 'Message';
+  - var contactFormMessagePlaceholder  = 'Message';
+  - var contactFormButtonLabel         = 'Send Message';
+  - var contactFormHeader              = true;
+
+.form__contact
+  .form__contact--inner
+
+    if contactFormHeader
+      .form__contact--header
+        h2.form__contact--title=contactFormTitle
+
+    //-
+    //- Add content before main section
+    block form__contact__main_before
+
+    .form__contact--main
+      .form__contact--box
+        form.form(action="",method="post")
+          .form--fields
+            +form__field( contactFormNameLabel )
+              input.form--control(type="text",id="input-name",name="name",placeholder=contactFormNamePlaceholder)
+
+            +form__field( contactFormEmailLabel )
+              input.form--control(type="email",id="input-email",name="email",placeholder=contactFormEmailPlaceholder)
+
+            if contactFormPhone
+              +form__field( contactFormPhoneLabel )
+                input.form--control(type="text",id="input-phone",name="phone",placeholder=contactFormPhonePlaceholder)
+
+            +form__field( contactFormMessageLabel )
+              textarea.form--control(id="input-message",name="message",placeholder=contactFormMessagePlaceholder)
+
+
+            //-
+            //- Add content after form fields
+            block form__contact__fields_after
+
+          .form--submit
+            +button( contactFormButtonLabel, 'submit', 'primary', 'md' )
+
+          //-
+          //- Add content after form
+          block form__contact__form_after
+    //-
+    //- Add content after main section
+    block form__contact__main_after

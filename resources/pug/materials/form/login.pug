@@ -1,0 +1,53 @@
+//-
+//- Login form
+//-
+block form__login_vars
+  - var loginFormTitle               = 'Login';
+  - var loginFormUsernameLabel       = 'Username';
+  - var loginFormUsernamePlaceholder = 'Username';
+  - var loginFormPasswordLabel       = 'Password';
+  - var loginFormPasswordPlaceholder = 'Password';
+  - var loginFormRememberInfo        = 'Remember password';
+  - var loginFormButtonLabel         = 'Login';
+  - var loginFormId                  = 'form__login';
+  - var loginFormRemember            = true;
+
+.form__login(id=loginFormId)
+  .form__login--inner
+    .form__login--header
+      h2.form__login--title=loginFormTitle
+
+    //-
+    //- Add content before main section
+    block form__login__main_before
+
+    .form__login--main
+      .form__login--box
+        form.form(action="",method="post")
+          .form--fields
+            +form__field( loginFormUsernameLabel )
+              input.form--control(type="text",id="input-username",name="username",placeholder=loginFormUsernamePlaceholder)
+
+            +form__field( loginFormPasswordLabel )
+              input.form--control(type="password",id="input-password",name="password",placeholder=loginFormPasswordPlaceholder)
+
+            //-
+            //- Add content after form fields
+            block form__login__fields_after
+
+            if loginFormRemember
+              .form--field
+                .form--input
+                  label
+                    input.form--checkbox(type="checkbox",name="remember")
+                    span=loginFormRememberInfo
+
+          .form--submit
+            +button( loginFormButtonLabel, 'submit', 'primary', 'md' )
+
+          //-
+          //- Add content after form
+          block form__login__form_after
+    //-
+    //- Add content after main section
+    block form__login__main_after

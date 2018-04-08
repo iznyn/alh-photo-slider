@@ -1,0 +1,77 @@
+//
+// Alert styles
+//
+.ui__alert
+    +pof
+    +l0
+    +r0
+    +t( 50px )
+    +zi( 999999 )
+
+    &--main
+        +w( 560px )
+        +mxa
+        +bgc( #eeeeee )
+        +rad( 50px )
+        +p( 15px 20px 15px 60px )
+        +por
+
+    &--content
+        +fs( 14px )
+        +fb0
+        +c( #444444 )
+
+        a
+            +tdul
+
+    &--icon
+        +poa
+        +t( 9px )
+        +l( 12px )
+        +fs( 32px )
+        +lh( 32px )
+        +c( #999999 )
+
+    &--accept,
+    &--success
+        .ui__alert
+            &--main
+                +bgc( #4e9f2a )
+
+            &--content
+                +cf
+
+                a
+                    +cf
+
+            &--icon
+                +c( #345525 )
+
+    &--error,
+    &--danger
+        .ui__alert
+            &--main
+                +bgc( #be3333 )
+
+            &--content
+                +cf
+
+                a
+                    +cf
+
+            &--icon
+                +c( #712121 )
+
+    &--warning
+        .ui__alert
+            &--main
+                +bgc( #f9bf2c )
+
+            &--content
+                +c( #36464e )
+
+                a
+                    +c( #36464e )
+
+            &--icon
+                +c( #ab8628 )

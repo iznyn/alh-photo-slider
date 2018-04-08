@@ -1,0 +1,114 @@
+//
+// Widget search styles
+//
+
+.widget__search
+    +dib
+
+    ._trigger
+        +fs( 16px )
+        +c( #686e6f )
+        +w( 28px )
+        +hlh( 28px )
+        +dib
+        +vam
+        +tac
+        +cup
+
+        &:hover
+            +c( #8bbc8f )
+
+    ._search
+        &--form
+            +poa
+            +t( 2px )
+            +r( 48px )
+            +h( 30px )
+            +w( 80px )
+            +bgcf
+            +d0
+
+            &._open
+                +db
+
+            &._show--input
+                form
+                    +w( 320px )
+
+                    // < 480px
+                    @media (max-width: 480px)
+                        +w( 255px )
+
+            &._show--close
+                ._search--close
+                    +o(1)
+
+            form
+                +w( 30px )
+                +mr( 40px )
+                +poa
+                +t0
+                +r0
+                +ofh
+                +transition( all 0.4s )
+                +pl( 20px )
+                +bgcf
+
+            &--fields
+                +w( 290px )
+                +mr( 30px )
+
+                // < 480px
+                @media (max-width: 480px)
+                    +w( 225px )
+
+            &--input
+                +wf
+
+                input
+                    +hlh( 30px )
+                    +bo0
+                    +bol( #cccccc, 2px )
+                    +wf
+                    +px( 10px )
+                    outline: none
+                    +ff( $ff-primary )
+                    +fi
+
+            &--submit
+                +mt0
+                +fs( 18px )
+                +w( 30px )
+                +h( 30px )
+                +tac
+                +poa
+                +r0
+                +t0
+                +bgcf
+                +c( #686e6f )
+
+                button
+                    +p0
+                    +m0
+                    +c( #555555 )
+                    +bgc0
+                    +bo0
+
+                    &:hover
+                        +c( #333333 )
+
+        &--close
+            +w( 30px )
+            +h( 30px )
+            +poa
+            +r0
+            +t( -4px )
+            +tac
+            +o(0)
+            +transition( all 0.4s )
+            +zi( 9999 )
+
+            img
+                +dib
+                +vam
+                +w( 12px )

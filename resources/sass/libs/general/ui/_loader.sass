@@ -1,0 +1,36 @@
+//
+// UI Loader styles
+//
+.ui__loader,
+.ui__loader--section
+    +poff
+    +bgc00
+    +zi( 99999 )
+    +ofh
+
+    &--main
+        +wf
+        +hf
+        display: flex
+
+    &--animation
+        align-self: center
+        +wf
+        +tac
+
+        img
+            +w( 150px )
+
+
+    //
+    //Loader section
+    &--section
+        +poa
+        +bgcf
+
+        &--animation
+            img
+                +w( 120px )
+
+.ui__loader--section
+  +zi(9)

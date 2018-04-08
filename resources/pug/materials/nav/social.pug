@@ -1,0 +1,14 @@
+//-
+//- Nav Social
+//-
+block nav__vars
+  - var menuItems = [];
+
+.nav__social
+  ul.clearfix
+    each menu in menuItems
+      li
+        a(href=menu.link)
+          i(class="fa fa-"+menu.name)
+          if menu.title
+            span=menu.title

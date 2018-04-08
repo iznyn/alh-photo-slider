@@ -1,0 +1,17 @@
+//-
+//- Button mixin
+mixin button( label, type, icon )
+  button(type="button", class="button button--"+type)&attributes(attributes)
+    span.button--inner
+      span.button--label=label
+      if icon
+        i(class="fa fa-"+icon)
+
+//-
+//- Button link
+mixin button__link( label, url, type, icon )
+  a(href=url, class="button button--"+type)&attributes(attributes)
+    span.button--inner
+      span.button--label=label
+      if icon
+        i(class="fa fa-"+icon)

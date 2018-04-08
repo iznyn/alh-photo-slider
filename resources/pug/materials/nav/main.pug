@@ -1,0 +1,40 @@
+//-
+//- Nav Main
+//-
+block nav__vars
+  - var menuItems = [];
+
+.nav.nav__main
+  .nav--inner
+    ul.nav--menus.clearfix
+      each menu in menuItems
+
+        if menu.name == pageName
+          - var menuClass = 'nav--menu nav--active nav--menu--'+menu.name;
+        else
+          - var menuClass = 'nav--menu nav--menu--'+menu.name;
+
+        li(class=menuClass)
+          .nav--menu--main
+            a.nav--link(href=menu.link)
+              if menu.icon_before
+                span.nav--link--icon
+                  i(class="fa fa-"+menu.icon_before)
+
+              span.nav--link--label=menu.title
+
+              if menu.submenu
+                span.nav--link--toggle
+                  i(class="fa fa-angle-down")
+
+          if menu.submenu
+            ul.nav--submenu
+              each submenu in menu.submenu
+                li.nav--submenu--item
+                  a.nav--submenu--link(href=submenu.link)
+
+                    if submenu.icon
+                      span.nav--link--icon
+                        i(class="fa fa-"+submenu.icon)
+
+                    span.nav--submenu--label=submenu.title

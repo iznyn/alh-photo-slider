@@ -1,0 +1,21 @@
+//-
+//- Search form
+//-
+block form__search_vars
+  - var searchFormId                = 'search--form';
+  - var searchFormButton            = 'Search';
+  - var searchFormInputLabel        = false;
+  - var searchFormInputIcon         = false;
+  - var searchFormInputPlaceholder  = '';
+
+.form__login(id=searchFormId)
+  .form--fields
+    +form__field( searchFormInputLabel )
+      input.form--control(type="text",id="input-keyword",name="keyword",placeholder=searchFormInputPlaceholder)
+      if searchFormInputIcon
+        span.form--input--icon
+          i.fa.fa-search
+
+  if searchFormButton
+    .form--submit
+      +button( searchFormButton, 'submit', 'primary', 'md' )

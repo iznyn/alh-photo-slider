@@ -1,0 +1,36 @@
+//
+// UI Modal styles
+//
+.ui__modal
+  +por
+
+  ._overlay
+    +poff
+    +bgc( rgba(255,255,255,.8) )
+    +zi( 99990 )
+
+  ._body
+    +poff
+    +bgc0
+    +ofa
+    +p( 30px 50px )
+    +zi( 99999 )
+    display: flex
+    align-items: center
+    justify-content: space-around
+    +tac
+
+    // < 768px
+    @media (max-width: 768px)
+      align-items: flex-start
+
+  ._content
+    +minw( 560px )
+    +bgcf
+    +p( 50px 40px )
+
+    // < 560px
+    @media (max-width: 560px)
+      +minw( auto )
+      +wf
+      +px( 20px )

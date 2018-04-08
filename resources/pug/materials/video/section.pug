@@ -1,0 +1,20 @@
+//-
+//- Video section template
+//-
+.video__section
+    ._inner
+        ._video
+            video
+                <source src="media/.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+                <source src="media/.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+
+        ._poster(style="background-image:url('images/.jpg')")
+        ._content
+            ._content--inner
+                ._title
+
+                a._trigger(href="#")
+                    i.icon--play
+                    span Play Video
+
+                ._info

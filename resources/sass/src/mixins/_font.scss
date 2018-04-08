@@ -1,0 +1,23 @@
+//
+// Font mixins
+//
+@mixin ff-main() {
+  font-family: $ff-main;
+}
+
+@mixin ff-title() {
+  font-family: $ff-title;
+}
+
+@mixin f-section() {
+  @include ff-title();
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+@mixin f-paragraph() {
+  @include ff-text();
+  font-size: 16px;
+  line-height: 26px;
+}

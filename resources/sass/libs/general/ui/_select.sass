@@ -1,0 +1,88 @@
+//
+// UI Select
+//
+.ui__select
+  +por
+  +dib
+  +vam
+
+  &._showing,
+  &._shown
+    ._items
+      +translateY( 0 )
+      +vion
+      +o( 1 )
+
+  &._disable
+    ._current
+      +o( 0.5 )
+      cursor: not-allowed
+
+  ._current
+    +dib
+    +vam
+    +hlh( 22px )
+    +bgc( #f0f0f0 )
+    +td0
+    +px( 16px )
+    +rad( 2px )
+    +bs( 1px 2px 1px 0 rgba(0,0,0,0.1))
+    +transition( all 0.4s )
+    +por
+    +cup
+
+    &:hover
+      +bgc( #dfdfdf )
+      +td0
+
+    &--label
+      +dib
+      +vam
+      +lh( 22px )
+      +c( #757575 )
+      +fs( 11px )
+      +ttuc
+
+    ._icon
+      +c( #757575 )
+      +vam
+      +lh( 22px )
+      +ml( 10px )
+
+  ._items
+    +list-reset
+    +poa
+    +t( 28px )
+    +l0
+    +minw( 240px )
+    +bgc( #ffffff )
+    +zi( 990 )
+    +o(0)
+    +vioff
+    +translateY( 40px )
+    +transition( all 0.6s )
+    +p( 10px 0 )
+    +bo( #f2f2f2 )
+    +bs( 2px 3px 1px 0 rgba(0,0,0,0.1))
+
+    ._item
+        +p( 2px 10px )
+        +c( #666666 )
+        +fs( 11px )
+        +ttuc
+        +cup
+        +transition( all 0.6s )
+
+        &:hover
+            +bgc( #e0e0e0 )
+            +c( #555555 )
+
+
+//
+//On process
+//
+body._on-process
+  .ui__select
+    ._current
+        +o( 0.5 )
+        cursor: not-allowed

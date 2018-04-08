@@ -1,0 +1,12 @@
+//-
+//- Nav Simple
+//-
+block nav__vars
+  - var menuItems = [];
+  - var navClass  = 'nav';
+
+div(class=navClass)
+  ul.clearfix
+    each menu in menuItems
+      li
+        a(href=menu.link)=menu.title

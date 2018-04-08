@@ -1,0 +1,22 @@
+//-
+//- Header views
+//-
+block header_vars
+  - var logoUrl = "images/logo--main.png";
+
+header.header
+  .header--inner
+    .container-fluid
+      .row
+        .col-md-2.header--main
+          .header--col-inner
+            a.header--logo(href="index.html")
+              img(src=logoUrl alt="")
+
+        .col-md-8.header--nav
+          .header--col-inner
+            block header__nav
+
+        .col-md-2.header--nav-right
+          .header--col-inner
+            block header__right
