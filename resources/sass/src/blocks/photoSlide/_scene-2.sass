@@ -1,0 +1,47 @@
+//
+// Photo slide scene 2
+//
+.photo-slide__scene-2
+  +translateX( -110% )
+
+  ._scene--info
+    ._info--title
+      +fs( 24px )
+      +ttuc
+      +cf
+      +lh( 24px )
+      letter-spacing: 0.3em
+      +m0
+      +p( 24px 30px )
+      +bgc( rgba(0,0,0,.8) )
+      +l( 10% )
+      +b( 40% )
+      +translateY( 80px )
+      +o(0)
+
+    ._info--desc
+      +fs( 14px )
+      +ttlc
+      +cf
+      +lh( 18px )
+      letter-spacing: 0.1em
+      +m0
+      +p( 10px 16px )
+      +bgc( rgba(0,0,0,.5) )
+      +l( 5% )
+      +b( 37% )
+      +translateY( 120px )
+      +o(0)
+
+  &._scene--in
+    +translateX(0)
+
+  &._anim--in
+    ._info--title
+      +translateY(0)
+      +o(1)
+
+    ._info--desc
+      animation-delay: 1s
+      +translateX(0)
+      +o(1)
