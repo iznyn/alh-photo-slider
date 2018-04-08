@@ -3,23 +3,48 @@
   <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><![endif]-->
-    <title>MySite</title>
-    <meta name="description" content="MySite">
+    <title>AL-Huda Photo Slide</title>
+    <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui, user-scalable=no">
     <link rel="icon" href="favicon.png" type="image/x-icon" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:600,600i,700,700i|Merriweather:900" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body class="home">
     <div class="site">
-      <div class="header">
-        <div class="header--inner"></div>
+      <div class="photo-slide">
+        <div class="photo-slide--main">
+          <div class="photo-slide--scene photo-slide__scene-1 _scene--in">
+            <div class="_scene--image" style="background-image:url( 'images/busan-night.jpg' )"></div>
+            <div class="_scene--info">
+              <h2 class="_info--title _anim--item">Busan Night</h2>
+              <div class="_info--desc _anim--item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non accumsan neque.</div>
+            </div>
+          </div>
+          <div class="photo-slide--scene photo-slide__scene-2">
+            <div class="_scene--image" style="background-image:url( 'images/budhist-childs.jpg' )"></div>
+            <div class="_scene--info">
+              <h2 class="_info--title _anim--item">Buddhist Childs</h2>
+              <div class="_info--desc _anim--item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non accumsan neque.</div>
+            </div>
+          </div>
+          <div class="photo-slide--scene photo-slide__scene-3">
+            <div class="_scene--image" style="background-image:url( 'images/mammal.jpg' )"></div>
+            <div class="_scene--info">
+              <h2 class="_info--title _anim--item">Mammal</h2>
+              <div class="_info--desc _anim--item">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi non accumsan neque.</div>
+            </div>
+          </div>
+        </div>
+        <div class="photo-slide--nav"></div>
+        <div class="photo-slide--loader">
+          <div class="_icon">
+            <div class="_icon--logo"></div>
+            <div class="_icon--circle"></div>
+          </div>
+        </div>
       </div>
-      <main class="main">
-      </main>
-      <footer class="footer">
-        <div class="footer--inner"></div>
-      </footer>
     </div>
     <script src="js/scripts.js"></script>
   </body>

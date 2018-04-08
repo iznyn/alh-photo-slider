@@ -12765,23 +12765,278 @@ var Home = function () {
 exports.default = Home;
 
 },{}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+//
+// Photo Slide lib
+//
+var PhotoSlide = function () {
+    /**
+     * Class constructor
+     *
+     * @return void
+     */
+    function PhotoSlide() {
+        _classCallCheck(this, PhotoSlide);
+
+        this.container = $('.photo-slide');
+        this.index = 1;
+        this.count = 0;
+        this.scenes = [];
+    }
+
+    /**
+     * Init
+     *
+     * @return mixed
+     */
+
+
+    _createClass(PhotoSlide, [{
+        key: 'init',
+        value: function init() {
+            var _this = this;
+
+            this.scenes = $('.photo-slide--scene', this.container);
+            this.count = this.scenes.length;
+
+            //setup slide
+            this.setupSlide();
+
+            //prepare slider
+            this.prepareSlider();
+
+            //responsive
+            $(window).resize(function () {
+                _this.setupSlide();
+            });
+
+            return this;
+        }
+
+        /**
+         * Setup slide
+         *
+         * @return mixed
+         */
+
+    }, {
+        key: 'setupSlide',
+        value: function setupSlide() {
+            var _this2 = this;
+
+            this.winWidth = $(window).width();
+            this.winHeight = $(window).height();
+
+            this.scenes.each(function (i, el) {
+                var scene = $(el);
+                var index = i + 1;
+                scene.attr('data-index', index).width(_this2.winWidth).height(_this2.winHeight);
+            });
+        }
+
+        /**
+         * Prepare slider
+         *
+         * @return mixed
+         */
+
+    }, {
+        key: 'prepareSlider',
+        value: function prepareSlider() {
+            var _this3 = this;
+
+            this.index = 1;
+            this.scenes.hide();
+
+            var first = $('.photo-slide--scene:nth-child(1)', this.container);
+            first.show().addClass('_active').addClass('_scene--in');
+
+            //Hide loader add run first animation
+            setTimeout(function () {
+                $('.photo-slide--loader').addClass('_hide');
+
+                setTimeout(function () {
+                    $('.photo-slide--loader').hide();
+                    first.addClass('_anim--in');
+
+                    _this3.goNext(first);
+                }, 600);
+            }, 1000);
+        }
+
+        /**
+         * Next slider
+         *
+         * @return mixed
+         */
+
+    }, {
+        key: 'next',
+        value: function next() {
+            var currentIndex = this.index;
+            var nextIndex = currentIndex + 1;
+
+            if (nextIndex > this.count) {
+                nextIndex = 1;
+            }
+            this.goto(nextIndex, currentIndex);
+            this.index = nextIndex;
+        }
+
+        /**
+         * Next slider
+         *
+         * @param object element
+         * @return mixed
+         */
+
+    }, {
+        key: 'goNext',
+        value: function goNext(element) {
+            var _this4 = this;
+
+            var interval = this.getInterval(element);
+            setTimeout(function () {
+                _this4.next();
+            }, interval);
+        }
+
+        /**
+         * Go to slider
+         *
+         * @param int targetIndex
+         * @param int currentIndex
+         * @return mixed
+         */
+
+    }, {
+        key: 'goto',
+        value: function goto(targetIndex, currentIndex) {
+            var _this5 = this;
+
+            var current = $('.photo-slide--scene:nth-child(' + currentIndex + ')', this.container);
+            var target = $('.photo-slide--scene:nth-child(' + targetIndex + ')', this.container);
+
+            current.css('zIndex', 99).removeClass('_anim--in').addClass('_anim--out');
+            target.show();
+
+            var currentDuration = this.getItemAnimationDuration(current);
+            var targetDuration = this.getItemAnimationDuration(target);
+            var slideDuration = this.getSlideDuration(target);
+            targetDuration += 400;
+
+            setTimeout(function () {
+                target.css('zIndex', 999).removeClass('_scene--out').addClass('_scene--in');
+
+                setTimeout(function () {
+                    target.removeClass('_anim--out').addClass('_anim--in');
+
+                    //Previus scene out
+                    setTimeout(function () {
+                        current.removeClass('_scene--in').addClass('_scene--out').hide();
+                    }, targetDuration);
+
+                    //Go next
+                    _this5.goNext(target);
+                }, slideDuration);
+            }, currentDuration);
+        }
+
+        /**
+         * Get interval
+         *
+         * @param element
+         * @return mixed
+         */
+
+    }, {
+        key: 'getInterval',
+        value: function getInterval(element) {
+            var interval = parseInt(element.attr('data-interval'));
+            if (typeof interval != 'undefined') {
+                interval = 6000;
+            }
+            return interval;
+        }
+
+        /**
+         * Get item animation duration
+         *
+         * @param element
+         * @return mixed
+         */
+
+    }, {
+        key: 'getItemAnimationDuration',
+        value: function getItemAnimationDuration(element) {
+            var duration = 0;
+            $('._anim--item', element).each(function (i, el) {
+                var cd = parseFloat($(el).css('transition-duration'));
+                if (cd > duration) {
+                    duration = cd;
+                }
+            });
+            duration *= 1000;
+            return duration;
+        }
+
+        /**
+         * Get slide duration
+         *
+         * @param element
+         * @return mixed
+         */
+
+    }, {
+        key: 'getSlideDuration',
+        value: function getSlideDuration(element) {
+            var duration = parseFloat($(element).css('transition-duration'));
+            duration *= 1000;
+            return duration;
+        }
+    }]);
+
+    return PhotoSlide;
+}();
+
+;
+
+exports.default = PhotoSlide;
+
+},{}],3:[function(require,module,exports){
 "use strict";
 
 var _Home = require("../libs/Home");
 
 var _Home2 = _interopRequireDefault(_Home);
 
+var _PhotoSlide = require("../libs/PhotoSlide");
+
+var _PhotoSlide2 = _interopRequireDefault(_PhotoSlide);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+// Main JS
+//
 (function ($) {
     "use strict";
 
     $(document).ready(function () {
         //Home script
         new _Home2.default().init();
+        //PhotoSlide script
+        new _PhotoSlide2.default().init();
     });
-})(jQuery); //
-// Main JS
-//
+})(jQuery);
 
-},{"../libs/Home":1}]},{},[2]);
+},{"../libs/Home":1,"../libs/PhotoSlide":2}]},{},[3]);
