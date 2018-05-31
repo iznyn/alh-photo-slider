@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Lomba 17-an HUT RI 52",
+        "count": 6,
+        "file": "lomba-17an-hut-ri-52.json"
+    },
+    {
+        "name": "HUT RI 52",
+        "count": 5,
+        "file": "hut-ri-52.json"
+    },
+    {
+        "name": "AKMAL 17-an",
+        "count": 4,
+        "file": "akmal-17-an.json"
+    },
+    {
+        "name": "LPJ Takmir",
+        "count": 4,
+        "file": "lpj-takmir.json"
+    },
+    {
+        "name": "Milad AKMAL 1999",
+        "count": 9,
+        "file": "milad-akmal-1999.json"
+    }
+]
