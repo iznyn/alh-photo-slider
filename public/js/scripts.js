@@ -12788,9 +12788,12 @@ var PhotoSlide = function () {
         _classCallCheck(this, PhotoSlide);
 
         this.container = $('.photo-slide');
+        this.mainContainer = $('.photo-slide--main');
         this.index = 1;
         this.count = 0;
         this.scenes = [];
+        this.itemIndex = 1;
+        this.iterationIndex = 0;
     }
 
     /**
@@ -12805,21 +12808,131 @@ var PhotoSlide = function () {
         value: function init() {
             var _this = this;
 
-            this.scenes = $('.photo-slide--scene', this.container);
-            this.count = this.scenes.length;
+            //Load slider
+            this.loadSlides(function () {
+                _this.scenes = $('.photo-slide--scene', _this.container);
+                _this.count = _this.scenes.length;
 
-            //setup slide
-            this.setupSlide();
-
-            //prepare slider
-            this.prepareSlider();
-
-            //responsive
-            $(window).resize(function () {
+                //setup slide
                 _this.setupSlide();
+
+                //prepare slider
+                _this.prepareSlider();
+
+                //responsive
+                $(window).resize(function () {
+                    _this.setupSlide();
+                });
             });
 
             return this;
+        }
+
+        /**
+         * Load slide
+         *
+         * @return mixed
+         */
+
+    }, {
+        key: 'loadSlides',
+        value: function loadSlides(CB) {
+            var self = this;
+            var requestUrl = 'data/slides.json';
+
+            $.ajax({
+                url: requestUrl,
+                type: 'GET',
+                data: '',
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                error: function error() {},
+                success: function success(data) {
+                    self.createSlides(data, CB);
+                }
+            });
+        }
+
+        /**
+         * Create slides
+         *
+         * @param array data
+         * @param object CB
+         * @return mixed
+         */
+
+    }, {
+        key: 'createSlides',
+        value: function createSlides(data, CB) {
+            if (data.length > 0) {
+                this.loadSlideItems(data, CB);
+            }
+        }
+
+        /**
+         * Create slides
+         *
+         * @param array data
+         * @return mixed
+         */
+
+    }, {
+        key: 'loadSlideItems',
+        value: function loadSlideItems(data, CB) {
+            var self = this;
+            var index = this.iterationIndex;
+            if (index >= data.length) {
+                CB();
+                return true;
+            }
+            var item = data[index];
+            $.ajax({
+                url: 'data/' + item.file,
+                type: 'GET',
+                data: '',
+                dataType: 'json',
+                processData: false,
+                contentType: false,
+                error: function error() {},
+                success: function success(itemData) {
+                    self.iterationIndex++;
+                    self.createSlideItems(itemData);
+                    self.loadSlideItems(data, CB);
+                }
+            });
+        }
+
+        /**
+         * Create slide items
+         *
+         * @param array items
+         * @return mixed
+         */
+
+    }, {
+        key: 'createSlideItems',
+        value: function createSlideItems(items) {
+            if (items.length > 0) {
+                for (var i = 0; i < items.length; i++) {
+                    this.createSlideItem(items[i]);
+                }
+            }
+        }
+
+        /**
+         * Create slide item
+         *
+         * @param object data
+         * @return mixed
+         */
+
+    }, {
+        key: 'createSlideItem',
+        value: function createSlideItem(data) {
+            var item = $('<div></div>').addClass('photo-slide--scene').addClass('photo-slide__scene-' + this.itemIndex).attr('data-index', this.itemIndex).attr('data-position', data.infoPosition).attr('data-theme', data.infoTheme).attr('data-animation', data.animation).append($('<div></div>').addClass('_scene--image').attr('style', "background-image:url('images/" + data.image + "')")).append($('<div></div>').addClass('_scene--info').append($('<h2></h2>').addClass('_info--title').addClass('_anim--item').text(data.title)).append($('<div></div>').addClass('_info--desc').addClass('_anim--item').html(data.info_1))).appendTo(this.mainContainer);
+
+            this.itemIndex++;
         }
 
         /**
@@ -12856,6 +12969,7 @@ var PhotoSlide = function () {
 
             this.index = 1;
             this.scenes.hide();
+            this.container.addClass('_play');
 
             var first = $('.photo-slide--scene:nth-child(1)', this.container);
             first.show().addClass('_active').addClass('_scene--in');
@@ -12903,6 +13017,11 @@ var PhotoSlide = function () {
         key: 'goNext',
         value: function goNext(element) {
             var _this4 = this;
+
+            var cnt = this.container;
+            if (cnt.hasClass('_pause') || !cnt.hasClass('_play')) {
+                return true;
+            }
 
             var interval = this.getInterval(element);
             setTimeout(function () {

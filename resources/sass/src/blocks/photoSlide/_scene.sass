@@ -1,0 +1,144 @@
+//
+// Photo slide scene 1
+//
+.photo-slide--scene
+  //
+  // Theme
+  //
+  &[data-theme="default"]
+    ._scene--info
+      ._info--title
+        +fs( 24px )
+        +ttuc
+        +cf
+        +lh( 24px )
+        letter-spacing: 0.3em
+        +m0
+        +p( 24px 30px )
+        +bgc( rgba(0,0,0,.8) )
+        +translateY( 80px )
+        +o(0)
+
+      ._info--desc
+        +fs( 14px )
+        +ttlc
+        +cf
+        +lh( 18px )
+        letter-spacing: 0.1em
+        +m0
+        +p( 10px 16px )
+        +bgc( rgba(0,0,0,.5) )
+        +translateY( 120px )
+        +o(0)
+
+  //
+  // Position
+  //
+  &[data-position="top_left"]
+    ._scene--info
+      ._info--title
+        +l( 5% )
+        +t( 10% )
+
+      ._info--desc
+        +l( 10% )
+        +t( 18% )
+
+  &[data-position="top_center"]
+    ._scene--info
+      ._info--title
+        +l( 40% )
+        +t( 10% )
+
+      ._info--desc
+        +l( 45% )
+        +t( 18% )
+
+  &[data-position="top_right"]
+    ._scene--info
+      ._info--title
+        +r( 10% )
+        +t( 10% )
+
+      ._info--desc
+        +r( 5% )
+        +t( 18% )
+
+  &[data-position="middle_left"]
+    ._scene--info
+      ._info--title
+        +l( 5% )
+        +b( 44% )
+
+      ._info--desc
+        +l( 10% )
+        +b( 40% )
+
+  &[data-position="middle_center"]
+    ._scene--info
+      ._info--title
+        +l( 40% )
+        +b( 44% )
+
+      ._info--desc
+        +r( 45% )
+        +b( 40% )
+
+  &[data-position="middle_right"]
+    ._scene--info
+      ._info--title
+        +r( 10% )
+        +b( 44% )
+
+      ._info--desc
+        +r( 5% )
+        +b( 40% )
+
+  &[data-position="bottom_left"]
+    ._scene--info
+      ._info--title
+        +l( 5% )
+        +b( 14% )
+
+      ._info--desc
+        +l( 10% )
+        +b( 10% )
+
+  &[data-position="bottom_center"]
+    ._scene--info
+      ._info--title
+        +l( 40% )
+        +b( 14% )
+
+      ._info--desc
+        +l( 45% )
+        +b( 10% )
+
+  &[data-position="bottom_right"]
+    ._scene--info
+      ._info--title
+        +r( 10% )
+        +b( 14% )
+
+      ._info--desc
+        +r( 5% )
+        +b( 10% )
+
+  //
+  // ANimation
+  //
+  &[data-animation="default"]
+    +translateY( -110% )
+
+    &._scene--in
+      +translateY(0)
+
+    &._anim--in
+      ._info--title
+        +translateY(0)
+        +o(1)
+
+      ._info--desc
+        animation-delay: 1s
+        +translateX(0)
+        +o(1)

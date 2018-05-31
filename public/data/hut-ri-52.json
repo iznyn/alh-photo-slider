@@ -1,0 +1,42 @@
+[
+    {
+        "title": "HUT RI ke 52 - Photo 1",
+        "image": "HUT-RI-Ke-5205212018_0001.jpg",
+        "info_1": "HUT RI ke 52 - Photo 1",
+        "animation": "default",
+        "infoPosition": "top_left",
+        "infoTheme": "default"
+    },
+    {
+        "title": "HUT RI ke 52 - Photo 2",
+        "image": "HUT-RI-Ke-5205212018_0002.jpg",
+        "info_1": "HUT RI ke 52 - Photo 2",
+        "animation": "default",
+        "infoPosition": "middle_left",
+        "infoTheme": "default"
+    },
+    {
+        "title": "HUT RI ke 52 - Photo 3",
+        "image": "HUT-RI-Ke-5205212018_0003.jpg",
+        "info_1": "HUT RI ke 52 - Photo 3",
+        "animation": "default",
+        "infoPosition": "middle_right",
+        "infoTheme": "default"
+    },
+    {
+        "title": "HUT RI ke 52 - Photo 4",
+        "image": "HUT-RI-Ke-5205212018_0004.jpg",
+        "info_1": "HUT RI ke 52 - Photo 4",
+        "animation": "default",
+        "infoPosition": "top_center",
+        "infoTheme": "default"
+    },
+    {
+        "title": "HUT RI ke 52 - Photo 5",
+        "image": "HUT-RI-Ke-5205212018_0005.jpg",
+        "info_1": "HUT RI ke 52 - Photo 5",
+        "animation": "default",
+        "infoPosition": "bottom_left",
+        "infoTheme": "default"
+    }
+]
