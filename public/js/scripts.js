@@ -12794,6 +12794,7 @@ var PhotoSlide = function () {
         this.scenes = [];
         this.itemIndex = 1;
         this.iterationIndex = 0;
+        this.defaultInterval = 10000;
     }
 
     /**
@@ -12930,7 +12931,11 @@ var PhotoSlide = function () {
     }, {
         key: 'createSlideItem',
         value: function createSlideItem(data) {
-            var item = $('<div></div>').addClass('photo-slide--scene').addClass('photo-slide__scene-' + this.itemIndex).attr('data-index', this.itemIndex).attr('data-position', data.infoPosition).attr('data-theme', data.infoTheme).attr('data-animation', data.animation).append($('<div></div>').addClass('_scene--image').append($('<img/>').attr('src', 'images/' + data.image))).append($('<div></div>').addClass('_scene--info').append($('<h2></h2>').addClass('_info--title').addClass('_anim--item').text(data.title)).append($('<div></div>').addClass('_info--desc').addClass('_anim--item').html(data.info_1))).appendTo(this.mainContainer);
+            var interval = this.defaultInterval;
+            if (typeof data.interval !== 'undefined') {
+                interval = parseInt(data.interval);
+            }
+            var item = $('<div></div>').addClass('photo-slide--scene').addClass('photo-slide__scene-' + this.itemIndex).attr('data-index', this.itemIndex).attr('data-position', data.infoPosition).attr('data-theme', data.infoTheme).attr('data-animation', data.animation).attr('data-interval', data.interval).append($('<div></div>').addClass('_scene--image').append($('<img/>').attr('src', 'images/' + data.image))).append($('<div></div>').addClass('_scene--info').append($('<h2></h2>').addClass('_info--title').addClass('_anim--item').text(data.title)).append($('<div></div>').addClass('_info--desc').addClass('_anim--item').html(data.info_1))).appendTo(this.mainContainer);
 
             this.itemIndex++;
         }
@@ -13080,9 +13085,9 @@ var PhotoSlide = function () {
     }, {
         key: 'getInterval',
         value: function getInterval(element) {
-            var interval = parseInt(element.attr('data-interval'));
-            if (typeof interval != 'undefined') {
-                interval = 6000;
+            var interval = this.defaultInterval;
+            if (typeof element.attr('data-interval') != 'undefined') {
+                interval = parseInt(element.attr('data-interval'));
             }
             return interval;
         }

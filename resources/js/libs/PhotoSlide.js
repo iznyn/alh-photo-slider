@@ -17,6 +17,7 @@ class PhotoSlide
         this.scenes = [];
         this.itemIndex = 1;
         this.iterationIndex = 0;
+        this.defaultInterval = 10000;
     }
 
     /**
@@ -143,6 +144,10 @@ class PhotoSlide
      */
     createSlideItem(data)
     {
+        let interval = this.defaultInterval;
+        if (typeof data.interval !== 'undefined') {
+            interval = parseInt(data.interval);
+        }
         let item = $('<div></div>')
             .addClass('photo-slide--scene')
             .addClass('photo-slide__scene-' + this.itemIndex)
@@ -150,6 +155,7 @@ class PhotoSlide
             .attr('data-position', data.infoPosition)
             .attr('data-theme', data.infoTheme)
             .attr('data-animation', data.animation)
+            .attr('data-interval', data.interval)
             .append(
                 $('<div></div>')
                     .addClass('_scene--image')
@@ -326,9 +332,9 @@ class PhotoSlide
      */
     getInterval( element )
     {
-        let interval = parseInt( element.attr( 'data-interval' ) );
-        if ( typeof interval != 'undefined') {
-            interval = 6000;
+        let interval = this.defaultInterval;
+        if ( typeof element.attr('data-interval') != 'undefined') {
+            interval = parseInt( element.attr('data-interval') );
         }
         return interval;
     }

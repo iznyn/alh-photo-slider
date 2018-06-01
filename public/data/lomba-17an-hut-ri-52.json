@@ -13,7 +13,8 @@
         "info_1": "Lomba 17-an HUT RI ke 52 - Photo 2",
         "animation": "default",
         "infoPosition": "middle_left",
-        "infoTheme": "default"
+        "infoTheme": "default",
+        "interval": 30000
     },
     {
         "title": "Lomba 17-an HUT RI ke 52 - Photo 3",
