@@ -12930,7 +12930,7 @@ var PhotoSlide = function () {
     }, {
         key: 'createSlideItem',
         value: function createSlideItem(data) {
-            var item = $('<div></div>').addClass('photo-slide--scene').addClass('photo-slide__scene-' + this.itemIndex).attr('data-index', this.itemIndex).attr('data-position', data.infoPosition).attr('data-theme', data.infoTheme).attr('data-animation', data.animation).append($('<div></div>').addClass('_scene--image').attr('style', "background-image:url('images/" + data.image + "')")).append($('<div></div>').addClass('_scene--info').append($('<h2></h2>').addClass('_info--title').addClass('_anim--item').text(data.title)).append($('<div></div>').addClass('_info--desc').addClass('_anim--item').html(data.info_1))).appendTo(this.mainContainer);
+            var item = $('<div></div>').addClass('photo-slide--scene').addClass('photo-slide__scene-' + this.itemIndex).attr('data-index', this.itemIndex).attr('data-position', data.infoPosition).attr('data-theme', data.infoTheme).attr('data-animation', data.animation).append($('<div></div>').addClass('_scene--image').append($('<img/>').attr('src', 'images/' + data.image))).append($('<div></div>').addClass('_scene--info').append($('<h2></h2>').addClass('_info--title').addClass('_anim--item').text(data.title)).append($('<div></div>').addClass('_info--desc').addClass('_anim--item').html(data.info_1))).appendTo(this.mainContainer);
 
             this.itemIndex++;
         }

@@ -10,6 +10,51 @@
         "file": "hut-ri-52.json"
     },
     {
+        "name": "Syawalan 1994",
+        "count": 6,
+        "file": "syawalan-1994.json"
+    },
+    {
+        "name": "Syawalan 1995",
+        "count": 6,
+        "file": "syawalan-1995.json"
+    },
+    {
+        "name": "Pengajian Tahun Baru 1995",
+        "count": 4,
+        "file": "pengajian-tahun-baru-1995.json"
+    },
+    {
+        "name": "Pamitan Haji 1996",
+        "count": 4,
+        "file": "pamitan-haji-1996.json"
+    },
+    {
+        "name": "Pengajian Tahun Baru 1997",
+        "count": 4,
+        "file": "pengajian-tahun-baru-1997.json"
+    },
+    {
+        "name": "Pengajian Maulid Nabi 1997",
+        "count": 4,
+        "file": "maulid-nabi-1997.json"
+    },
+    {
+        "name": "Tirakatan & Turnamen Bola 2000",
+        "count": 4,
+        "file": "tirakatan-turnamen-bola-2000.json"
+    },
+    {
+        "name": "Syawalan & Takbiran 2001",
+        "count": 2,
+        "file": "syawalan-takbiran-2001.json"
+    },
+    {
+        "name": "HUT RI 60",
+        "count": 4,
+        "file": "hut-ri-60.json"
+    },
+    {
         "name": "AKMAL 17-an",
         "count": 4,
         "file": "akmal-17-an.json"
