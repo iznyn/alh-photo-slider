@@ -2611,9 +2611,11 @@ html, body, .site {
       right: 0;
       top: 0;
       bottom: 0;
-      background-position: 0 0;
-      background-repeat: no-repeat;
-      background-size: cover; }
+      background-color: #000000;
+      text-align: center; }
+      .photo-slide--scene ._scene--image img {
+        height: 100%;
+        width: auto; }
     .photo-slide--scene ._scene--info ._anim--item {
       position: absolute;
       z-index: 9;

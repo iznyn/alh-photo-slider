@@ -153,7 +153,10 @@ class PhotoSlide
             .append(
                 $('<div></div>')
                     .addClass('_scene--image')
-                    .attr('style', "background-image:url('images/" + data.image + "')")
+                    .append(
+                        $('<img/>')
+                            .attr('src', 'images/' + data.image)
+                    )
             )
             .append(
                 $('<div></div>')
