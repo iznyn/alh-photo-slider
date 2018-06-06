@@ -3,6 +3,8 @@
 //
 import HomeLib from "../libs/Home";
 import PhotoSlideLib from "../libs/PhotoSlide";
+import ControlsLib from "../libs/PhotoSlide/Controls";
+import MenusLib from "../libs/PhotoSlide/Menus";
 
 (function ($) {
     "use strict";
@@ -12,6 +14,10 @@ import PhotoSlideLib from "../libs/PhotoSlide";
         //Home script
         new HomeLib().init();
         //PhotoSlide script
-        new PhotoSlideLib().init();
+        let slide = new PhotoSlideLib().init();
+        //Controls script
+        new ControlsLib(slide).init();
+        //Menus script
+        new MenusLib(slide).init();
     });
 })(jQuery);

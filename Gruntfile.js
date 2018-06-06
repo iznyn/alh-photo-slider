@@ -62,15 +62,24 @@ module.exports = function(grunt)
           transform: [["babelify", { "presets": ["es2015"] }]]
         },
         src: [
-          '<%= meta.scripts %>src/*.js'
+          '<%= meta.scripts %>src/main.js'
         ],
         dest: '<%= meta.scripts %>/dist/main.js'
       },
       general: {
         src: [
-          '<%= meta.scripts %>src/*.js'
+          '<%= meta.scripts %>src/main.js'
         ],
         dest: '<%= meta.scripts %>/dist/main.js'
+      },
+      config: {
+        options: {
+          transform: [["babelify", { "presets": ["es2015"] }]]
+        },
+        src: [
+          '<%= meta.scripts %>src/config.js'
+        ],
+        dest: '<%= meta.scripts %>/dist/config.js'
       }
     },
 
@@ -117,6 +126,12 @@ module.exports = function(grunt)
           '<%= meta.scripts %>/dist/main.js'
         ],
         dest: '<%= meta.public %>js/scripts.js',
+      },
+      js_config: {
+        src: [
+          '<%= meta.scripts %>/dist/config.js'
+        ],
+        dest: '<%= meta.public %>js/config.js'
       }
     },
 

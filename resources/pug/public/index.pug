@@ -12,7 +12,44 @@ block main
   .photo-slide
     .photo-slide--main
 
-    .photo-slide--nav
+    .photo-slide__nav
+      ._nav--images
+        a._trigger(href="#")
+          i
+
+        ._menus
+          ._menus--inner
+            ._menus--images
+              ul
+
+          ._close--wrap
+            a._close(href="#")
+              i
+
+      ._nav--control
+        a._trigger(href="#")
+          i
+
+        ._menus
+          ._menus--inner
+            ._controls
+              a._menu--first(href="#")
+                i
+              a._menu--prev(href="#")
+                i
+              span._menus--main
+                a._menu--stop(href="#")
+                  i
+                a._menu--play(href="#")
+                  i
+              a._menu--next(href="#")
+                i
+              a._menu--last(href="#")
+                i
+
+          a._close(href="#")
+            i
+
     .photo-slide--loader
       ._icon
         ._icon--logo

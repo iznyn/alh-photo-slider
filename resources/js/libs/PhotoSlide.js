@@ -1,6 +1,8 @@
 //
 // Photo Slide lib
 //
+import _C from "lodash/collection";
+
 class PhotoSlide
 {
     /**
@@ -17,7 +19,9 @@ class PhotoSlide
         this.scenes = [];
         this.itemIndex = 1;
         this.iterationIndex = 0;
-        this.defaultInterval = 10000;
+        this.defaultInterval = 5000;
+        this.slideIntv = null;
+        this.currentIntervalCode = null;
     }
 
     /**
@@ -54,6 +58,29 @@ class PhotoSlide
      * @return mixed
      */
     loadSlides(CB)
+    {
+        let self = this;
+        let order = CONFIGSLIDERORDER;
+        let config = CONFIGSLIDER;
+
+        let dataSlider = [];
+        for (var i = 0; i < order.length; i++) {
+            let id = order[i];
+            let slideConfig = _C.find(config, {id: id});
+            if (slideConfig) {
+                dataSlider.push(slideConfig);
+            }
+        }
+        this.createSlideItems(dataSlider);
+        CB();
+    }
+
+    /**
+     * Load slide
+     *
+     * @return mixed
+     */
+    __loadSlides(CB)
     {
         let self = this;
         let requestUrl = 'data/slides.json';
@@ -151,6 +178,7 @@ class PhotoSlide
         let item = $('<div></div>')
             .addClass('photo-slide--scene')
             .addClass('photo-slide__scene-' + this.itemIndex)
+            .attr('data-id', data.id)
             .attr('data-index', this.itemIndex)
             .attr('data-position', data.infoPosition)
             .attr('data-theme', data.infoTheme)
@@ -238,11 +266,101 @@ class PhotoSlide
     }
 
     /**
+     * go to an index slide
+     *
+     * @return mixed
+     */
+    dir(id)
+    {
+        let element = $( '.photo-slide--scene[data-id="' + id + '"]');
+        if (element.length > 0)
+        {
+            let index = parseInt(element.attr('data-index'));
+            let currentIndex = this.index;
+            if (index == currentIndex) {
+                return true;
+            }
+            clearInterval(this.slideIntv);
+            this.container.attr('data-status', 'dir');
+            this.goto( index, currentIndex );
+            this.index = index;
+        }
+    }
+
+    /**
+     * go to an prev slide
+     *
+     * @return mixed
+     */
+    dirPrev()
+    {
+        let currentIndex = this.index;
+        let prevIndex = currentIndex-1;
+        if (prevIndex < 1) {
+            prevIndex = this.count;
+        }
+
+        clearInterval(this.slideIntv);
+        this.container.attr('data-status', 'dir');
+        this.goto(prevIndex, currentIndex);
+        this.index = prevIndex;
+    }
+
+    /**
+     * go to an next slide
+     *
+     * @return mixed
+     */
+    dirNext()
+    {
+        let currentIndex = this.index;
+        let nextIndex = currentIndex+1;
+        if (nextIndex > this.count) {
+            nextIndex = 1;
+        }
+
+        clearInterval(this.slideIntv);
+        this.container.attr('data-status', 'dir');
+        this.goto(nextIndex, currentIndex);
+        this.index = nextIndex;
+    }
+
+    /**
+     * go to an first slide
+     *
+     * @return mixed
+     */
+    dirFirst()
+    {
+        let currentIndex = this.index;
+        let nextIndex = 1;
+        clearInterval(this.slideIntv);
+        this.container.attr('data-status', 'dir');
+        this.goto(nextIndex, currentIndex);
+        this.index = nextIndex;
+    }
+
+    /**
+     * go to an last slide
+     *
+     * @return mixed
+     */
+    dirLast()
+    {
+        let currentIndex = this.index;
+        let nextIndex = this.count;
+        clearInterval(this.slideIntv);
+        this.container.attr('data-status', 'dir');
+        this.goto(nextIndex, currentIndex);
+        this.index = nextIndex;
+    }
+
+    /**
      * Next slider
      *
      * @return mixed
      */
-    next()
+    next(code = false)
     {
         let currentIndex = this.index;
         let nextIndex = currentIndex+1;
@@ -250,8 +368,18 @@ class PhotoSlide
         if ( nextIndex > this.count ) {
             nextIndex = 1;
         }
-        this.goto( nextIndex, currentIndex );
+        this.goto( nextIndex, currentIndex, code );
         this.index = nextIndex;
+    }
+
+    /**
+     * Resume slider
+     *
+     * @return mixed
+     */
+    resume()
+    {
+        this.next();
     }
 
     /**
@@ -260,16 +388,26 @@ class PhotoSlide
      * @param object element
      * @return mixed
      */
-    goNext( element )
+    goNext( element, code = false )
     {
-        let cnt = this.container;
-        if ( cnt.hasClass( '_pause' ) || ! cnt.hasClass( '_play' ) ) {
-            return true;
+        if (! code) {
+            code = this.makeid();
+            this.currentIntervalCode = code;
         }
-
+        let cnt = this.container;
         let interval = this.getInterval( element );
-        setTimeout(()=>{
-            this.next();
+        this.slideIntv = setTimeout(() =>
+        {
+            let validCode = true;
+            if (code && this.currentIntervalCode) {
+                if (code != this.currentIntervalCode) {
+                    validCode = false;
+                }
+            }
+            if ( validCode && ! cnt.hasClass( '_pause' ) && cnt.hasClass( '_play' ) ) {
+                this.next(code);
+            }
+
         }, interval);
     }
 
@@ -280,7 +418,7 @@ class PhotoSlide
      * @param int currentIndex
      * @return mixed
      */
-    goto( targetIndex, currentIndex )
+    goto( targetIndex, currentIndex, code = false )
     {
         let current = $( '.photo-slide--scene:nth-child('+currentIndex+')', this.container );
         let target = $( '.photo-slide--scene:nth-child('+targetIndex+')', this.container );
@@ -316,7 +454,7 @@ class PhotoSlide
                 },targetDuration);
 
                 //Go next
-                this.goNext( target );
+                this.goNext( target, code );
 
             },slideDuration);
 
@@ -370,6 +508,23 @@ class PhotoSlide
         let duration = parseFloat( $(element).css( 'transition-duration' ) );
         duration *= 1000;
         return duration;
+    }
+
+    /**
+     * Get slide duration
+     *
+     * @param element
+     * @return mixed
+     */
+    makeid ()
+    {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+        return text;
     }
 };
 

@@ -1,0 +1,179 @@
+//
+// Slide nav styles
+//
+.photo-slide__nav
+  ._trigger
+    +circle(42px)
+    +bgc(#ffffff)
+    +tac
+    +pof
+    +l(10px)
+    +b(60px)
+    +zi(9999990)
+    +transition(all 0.6s)
+    +td0
+    outline: none
+    +o(0.3)
+
+    &:hover
+      +o(1)
+
+    &._close
+      +translateX(-100px)
+
+    i
+      +dib
+      +vam
+      +w(24px)
+      +h(24px)
+      +bgp0
+      +bgr0
+      +bgsc
+
+  ._menus
+    ._close
+      +w(32px)
+      +hlh(32px)
+      +bgp0
+      +bgr0
+      +bgsc
+      background-image: url('../images/app/icon--close.svg')
+      +poa
+      +t(15px)
+      +r(20px)
+
+  ._nav--images
+    ._trigger
+      +b(70px)
+
+      i
+        background-image: url('../images/app/icon--dashboard.svg')
+
+    &._open
+      ._menus
+        +translateX(0)
+
+    ._close--wrap
+      +poa
+      +t0
+      +l0
+      +r0
+      +bgc(rgba(255,255,255,.4))
+      +h(65px)
+
+    ._menus
+      +pof
+      +t0
+      +b0
+      +l0
+      +w(250px)
+      +bgc(rgba(255,255,255,.8))
+      +zi(9999999)
+      +transition(all 0.6s)
+      +translateX(-110%)
+
+      &--inner
+        +p(65px 0 0)
+        +hf
+
+      &--images
+        +p(15px 20px 0)
+        +hf
+        +ofa
+
+      ul
+        +list-reset
+        +p(0 0 30px)
+
+        ._item
+          +mb(15px)
+
+          a
+            +db
+            +td0
+            outline: none
+
+          ._image
+            +w(100%)
+            +h(120px)
+            +ofh
+
+            img
+              +wf
+
+          ._title
+            +fs(10px)
+            +ttuc
+            +c(#666666)
+            +m(8px 0 0)
+
+  ._nav--control
+    ._trigger
+      +b(20px)
+
+      i
+        background-image: url('../images/app/icon--settings.svg')
+
+    &._open
+      ._menus
+        +translateY(0)
+
+    ._menus
+      +pof
+      +l0
+      +r0
+      +b0
+      +h(120px)
+      +bgc(rgba(255,255,255,.8))
+      +zi(9999999)
+      +transition(all 0.6s)
+      +translateY(110%)
+
+      &--inner
+        +tac
+        +hf
+        display: flex
+        align-items: center
+
+        ._controls
+          +dib
+          +mxa
+
+          ._menus--main
+            +mx(15px)
+
+          a
+            +dib
+            +vam
+            +w(42px)
+            +hlh(42px)
+            +bgc(#666666)
+            +rad(100%)
+            +tac
+            +mx(4px)
+            +transition(all 0.6s)
+
+            &:hover
+              +bgc(#444444)
+
+            &._menu--first i
+                background-image: url('../images/app/icon--first.svg')
+            &._menu--last i
+                background-image: url('../images/app/icon--last.svg')
+            &._menu--prev i
+                background-image: url('../images/app/icon--prev.svg')
+            &._menu--next i
+                background-image: url('../images/app/icon--next.svg')
+            &._menu--play i
+                background-image: url('../images/app/icon--play.svg')
+            &._menu--stop i
+                background-image: url('../images/app/icon--stop.svg')
+
+            i
+              +dib
+              +vam
+              +w(20px)
+              +h(20px)
+              +bgp0
+              +bgr0
+              +bgsc
