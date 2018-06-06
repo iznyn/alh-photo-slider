@@ -701,6 +701,15 @@ var CONFIGSLIDER = [
 
 var CONFIGSLIDERORDER = [
     //
+    // Syawalan 1994
+    //
+    1200,
+    1300,
+    1400,
+    1500,
+    1600,
+    1700,
+    //
     // Lomba 17-an HUT RI 52
     //
     100,
@@ -717,15 +726,6 @@ var CONFIGSLIDERORDER = [
     900,
     1000,
     1100,
-    //
-    // Syawalan 1994
-    //
-    1200,
-    1300,
-    1400,
-    1500,
-    1600,
-    1700,
     //
     // Syawalan 1995
     //
@@ -764,6 +764,25 @@ var CONFIGSLIDERORDER = [
     3800,
     3900,
     //
+    // LPJ Takmir
+    //
+    5400,
+    5500,
+    5600,
+    5700,
+    //
+    // Milad AKMAL 1999
+    //
+    5800,
+    5900,
+    6000,
+    6100,
+    6200,
+    6300,
+    6400,
+    6500,
+    6600,
+    //
     // Tirakatan & Turnamen Bola 2000
     //
     4000,
@@ -789,25 +808,6 @@ var CONFIGSLIDERORDER = [
     5100,
     5200,
     5300,
-    //
-    // LPJ Takmir
-    //
-    5400,
-    5500,
-    5600,
-    5700,
-    //
-    // Milad AKMAL 1999
-    //
-    5800,
-    5900,
-    6000,
-    6100,
-    6200,
-    6300,
-    6400,
-    6500,
-    6600,
     //
     // Turnamen Bola AKMAL
     //
